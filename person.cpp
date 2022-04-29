@@ -82,6 +82,17 @@ bool Person::Equals(const Object& rhs)const{
 	return strcmp(rhsPtr->_name, _name) == 0 && rhsPtr->_age == _age;
 
 }
+bool Person::Equals( Object& rhs){
+    if (this == &rhs){
+        return true;
+    }
+    const Person* rhsPtr = dynamic_cast<const Person*>(&rhs);
+    if (rhsPtr == nullptr){
+        return false;
+    }
+    return strcmp(rhsPtr->_name, _name) == 0 && rhsPtr->_age == _age;
+
+}
 /**
  * Explicitly creates a deep copy of this
  * @return a new copy of this

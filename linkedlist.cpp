@@ -230,3 +230,52 @@ void LinkedList::Clear(){
 //	_size = 0;
 
 }
+
+
+LinkedList* LinkedList::reverse(LinkedList *lst)
+{
+    // Initialize current, previous and next pointers
+    Node* current = lst->_head;
+    Node *prev = NULL, *next = NULL;
+
+    while (current != NULL) {
+        // Store next
+        next = current->next;
+        // Reverse current node's pointer
+        current->next = prev;
+        // Move pointers one position ahead.
+        prev = current;
+        current = next;
+    }
+    lst->_head = prev;
+    return lst;
+}
+LinkedList* LinkedList::EliminateDuplicates(LinkedList *lst)
+{
+    LinkedList *toReturnList=new LinkedList();
+    // Initialize current, previous and next pointers
+    Node* current = lst->_head;
+    Node *prev = NULL, *next = NULL;
+    toReturnList->_head=lst->_head;
+    Node *temp=toReturnList->_head;
+    while (current != NULL) {
+        next = current->next;
+        // checking if already contain data
+        while (temp->next!=0){
+
+            if (!current->data->Equals(*temp->data)) {
+
+                toReturnList->Insert(temp->data, toReturnList->_size);
+                break;
+            }
+
+            temp=temp->next;
+        }
+
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    return toReturnList;
+}

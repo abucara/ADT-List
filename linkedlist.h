@@ -40,10 +40,11 @@ class LinkedList : public List{
 		Node* next;
 	};
 	// Pointer to the first element of the list
-	Node* _head;
+    Node* _head;
 	LinkedList(const LinkedList&);
 	const LinkedList& operator=(const LinkedList&);
 public:
+
 	LinkedList();
 	virtual ~LinkedList();
 
@@ -53,6 +54,11 @@ public:
 	virtual Object* Get(size_t position)const;
 	virtual string ToString()const;
 	virtual void Clear();
+
+
+    virtual LinkedList * reverse(LinkedList *lst);
+
+    virtual LinkedList *EliminateDuplicates(LinkedList *lst);
 };
 
 

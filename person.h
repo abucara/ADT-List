@@ -25,6 +25,8 @@ class Person : public Object{
 		virtual bool Equals(const Object& rhs)const;
 		virtual Object* Clone()const;
 		void Birthday();
+
+    bool Equals(Object &rhs);
 };
 
 #endif /* end of include guard: PERSON */
